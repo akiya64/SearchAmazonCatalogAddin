@@ -36,7 +36,9 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.ExecuteButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
+            this.group1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
@@ -48,8 +50,14 @@
             // 
             // group1
             // 
+            this.group1.Items.Add(this.ExecuteButton);
             this.group1.Label = "group1";
             this.group1.Name = "group1";
+            // 
+            // ExecuteButton
+            // 
+            this.ExecuteButton.Label = "Amazonデータ取得";
+            this.ExecuteButton.Name = "ExecuteButton";
             // 
             // Ribbon1
             // 
@@ -59,6 +67,8 @@
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon1_Load);
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
+            this.group1.ResumeLayout(false);
+            this.group1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -67,6 +77,7 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton ExecuteButton;
     }
 
     partial class ThisRibbonCollection

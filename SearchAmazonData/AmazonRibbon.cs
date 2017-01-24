@@ -22,10 +22,23 @@ namespace SearchAmazonData
             {
                 string Jan = r.Value;
 
-                AmazonApi AmazonData = new AmazonApi(Jan);
+                try
+                {
+                    AmazonApi AmazonData = new AmazonApi(Jan);
 
-                r.Offset[0, 1].Value = AmazonData.SearchCatalog()[0];
-                r.Offset[0, 2].Value = AmazonData.SearchCatalog()[1];
+                    String[] Data = AmazonData.SearchCatalog();
+
+                    r.Resize[0, 1].Value = Data[0];
+                    r.Offset[0, 2].Value = Data[1];
+                    r.Offset[0, 3].Value = Data[2];
+                    r.Offset[0, 4].Value = r.Address;
+                }
+                catch
+                {
+                    r.Offset[0, 1].Value = "取得失敗";
+                    r.Offset[0, 4].Value = r.Address;
+                    continue;
+                }
             }
         }
     }

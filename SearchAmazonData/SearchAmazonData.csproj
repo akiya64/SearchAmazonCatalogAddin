@@ -190,10 +190,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Ribbon23.resx">
-      <DependentUpon>Ribbon23.cs</DependentUpon>
+    <EmbeddedResource Include="AmazonRibbon.resx">
+      <DependentUpon>AmazonRibbon.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -202,11 +201,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Ribbon23.cs">
+    <Compile Include="AmazonRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Ribbon23.Designer.cs">
-      <DependentUpon>Ribbon23.cs</DependentUpon>
+    <Compile Include="AmazonRibbon.Designer.cs">
+      <DependentUpon>AmazonRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="SignedRequestHelper.cs" />
     <Compile Include="ThisAddIn.cs">

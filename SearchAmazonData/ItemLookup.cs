@@ -27,19 +27,60 @@ using System.IO;
 using System.Xml;
 using System.Xml.XPath;
 
-namespace AmazonProductAdvtApi
+namespace SearchAmazonData
 {
-    class ItemLookupSample
+    class ItemLookup
     {
         private const string MY_AWS_ACCESS_KEY_ID = "YOUR_AWS_ACCESS_KEY_ID";
         private const string MY_AWS_SECRET_KEY = "YOUR_AWS_SECRET_KEY";
-        private const string DESTINATION          = "ecs.amazonaws.com";
+        private const string DESTINATION = "ecs.amazonaws.com";
         private const string ASSOCIATE_TAG = "YOUR_ASSOCIATE_TAG";
 
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
-        private const string ITEM_ID   = "0545010225";
+        private const string ITEM_ID = "0545010225";
 
-        public static void Main()
+        private String Jan;
+
+        public String[] AmazonCatalogData()
+        {
+            /*
+             * The helper supports two forms of requests - dictionary form and query string form.
+             */
+            String requestUrl;
+            String title;
+
+            /*
+             * Here is an ItemLookup example where the request is stored as a dictionary.
+             */
+            IDictionary<string, string> r1 = new Dictionary<string, String>();
+            r1["Service"] = "AWSECommerceService";
+            r1["Version"] = "2009-03-31";
+            r1["Operation"] = "ItemLookup";
+            r1["ItemId"] = Jan;
+            r1["ResponseGroup"] = "Small";
+
+            /* Random params for testing */
+            
+
+            SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION, ASSOCIATE_TAG);
+
+            requestUrl = helper.Sign(r1);
+            title = FetchTitle(requestUrl);
+
+            String[] Result = new String[]
+            {
+                title
+
+            };
+
+            return Result;
+        }
+
+        public ItemLookup(String Jan){
+            this.Jan = Jan;
+            }
+
+        public static void SampleMain()
         {
             SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION, ASSOCIATE_TAG);
 

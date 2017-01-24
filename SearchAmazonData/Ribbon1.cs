@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Office.Tools.Ribbon;
-using Microsoft.Office.Interop.Excel
+using Microsoft.Office.Interop.Excel;
 
-namespace SearchAmazonData;
+
+namespace SearchAmazonData
 {
     public partial class Ribbon1
     {
@@ -16,10 +14,10 @@ namespace SearchAmazonData;
             foreach (Range r in Selection){
                 String Jan = r.Value;                
 
-                ItemLookUp Result = new ItemLookUp(Jan);
+                 ItemLookup AmazonData = new ItemLookup(Jan);
 
-                r.Offset[0,1].Value = Result.ProductName;
-
+                r.Offset[0, 1].Value = AmazonData; 
+       
             }
 
         }

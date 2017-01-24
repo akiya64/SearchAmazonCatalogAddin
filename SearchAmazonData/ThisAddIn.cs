@@ -11,6 +11,7 @@ namespace SearchAmazonData
 {
     public partial class ThisAddIn
     {
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
         }

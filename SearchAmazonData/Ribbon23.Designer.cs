@@ -1,13 +1,13 @@
 ﻿namespace SearchAmazonData
 {
-    partial class Ribbon1 : Microsoft.Office.Tools.Ribbon.RibbonBase
+    partial class Ribbon2 : Microsoft.Office.Tools.Ribbon.RibbonBase
     {
         /// <summary>
         /// 必要なデザイナー変数です。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public Ribbon1()
+        public Ribbon2()
             : base(Globals.Factory.GetRibbonFactory())
         {
             InitializeComponent();
@@ -34,57 +34,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tab1 = this.Factory.CreateRibbonTab();
-            this.group1 = this.Factory.CreateRibbonGroup();
-            this.ExecuteButton = this.Factory.CreateRibbonButton();
-            this.tab1.SuspendLayout();
-            this.group1.SuspendLayout();
+            this.AmazonApiTab = this.Factory.CreateRibbonTab();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
+            this.AmazonApiTab.SuspendLayout();
+            this.group2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tab1
+            // AmazonApiTab
             // 
-            this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tab1.Groups.Add(this.group1);
-            this.tab1.Label = "TabAddIns";
-            this.tab1.Name = "tab1";
+            this.AmazonApiTab.Groups.Add(this.group2);
+            this.AmazonApiTab.Label = "Amazon API";
+            this.AmazonApiTab.Name = "AmazonApiTab";
             // 
-            // group1
+            // group2
             // 
-            this.group1.Items.Add(this.ExecuteButton);
-            this.group1.Label = "group1";
-            this.group1.Name = "group1";
+            this.group2.Items.Add(this.button1);
+            this.group2.Label = "group2";
+            this.group2.Name = "group2";
             // 
-            // ExecuteButton
+            // button1
             // 
-            this.ExecuteButton.Label = "Amazonデータ取得";
-            this.ExecuteButton.Name = "ExecuteButton";
+            this.button1.Label = "button1";
+            this.button1.Name = "button1";
+            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click_1);
             // 
-            // Ribbon1
+            // Ribbon2
             // 
-            this.Name = "Ribbon1";
+            this.Name = "Ribbon2";
             this.RibbonType = "Microsoft.Excel.Workbook";
-            this.Tabs.Add(this.tab1);
+            this.Tabs.Add(this.AmazonApiTab);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon1_Load);
-            this.tab1.ResumeLayout(false);
-            this.tab1.PerformLayout();
-            this.group1.ResumeLayout(false);
-            this.group1.PerformLayout();
+            this.AmazonApiTab.ResumeLayout(false);
+            this.AmazonApiTab.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton ExecuteButton;
+        public Microsoft.Office.Tools.Ribbon.RibbonTab AmazonApiTab;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
     }
 
     partial class ThisRibbonCollection
     {
-        internal Ribbon1 Ribbon1
+        internal Ribbon2 Ribbon1
         {
-            get { return this.GetRibbon<Ribbon1>(); }
+            get { return this.GetRibbon<Ribbon2>(); }
         }
     }
 }

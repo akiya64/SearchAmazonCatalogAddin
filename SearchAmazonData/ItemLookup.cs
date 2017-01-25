@@ -39,7 +39,6 @@ namespace SearchAmazonData
         public String Jan;
         public String Asin;
         public String Content;
-        public String Feature;
         public String Title;
         public String Spec;
         public String ImgUrL;

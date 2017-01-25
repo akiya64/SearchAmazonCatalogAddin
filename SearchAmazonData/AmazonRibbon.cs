@@ -25,18 +25,18 @@ namespace SearchAmazonData
                 try
                 {
                     AmazonApi AmazonData = new AmazonApi(Jan);
-
-                    String[] Data = AmazonData.SearchCatalog();
-
-                    r.Resize[0, 1].Value = Data[0];
-                    r.Offset[0, 2].Value = Data[1];
-                    r.Offset[0, 3].Value = Data[2];
-                    r.Offset[0, 4].Value = r.Address;
+                    
+                    r.Resize[0, 1].Value = AmazonData.Asin;
+                    r.Offset[0, 2].Value = AmazonData.Title;
+                    r.Offset[0, 3].Value = AmazonData.Spec;
+                    r.Offset[0, 4].Value = AmazonData.Content;
+                    r.Offset[0, 5].Value = AmazonData.ImgUrL;
+                     
                 }
                 catch
                 {
                     r.Offset[0, 1].Value = "取得失敗";
-                    r.Offset[0, 4].Value = r.Address;
+                    r.Offset[0, 6].Value = r.Address;
                     continue;
                 }
             }

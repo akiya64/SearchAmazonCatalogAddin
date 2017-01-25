@@ -21,11 +21,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Net;
-using System.IO;
+using System.Text;
 using System.Xml;
-using System.Xml.XPath;
 
 namespace SearchAmazonData
 {
@@ -34,13 +32,27 @@ namespace SearchAmazonData
         private const string MY_AWS_ACCESS_KEY_ID = "YOUR_MY_AWS_ACCESS_KEY_ID";
         private const string MY_AWS_SECRET_KEY = "YOUR_SECERET_KEY";
         private const string AMAZON_LOCALE = "webservices.amazon.co.jp";
-        private const string ASSOCIATE_TAG = "autumnsky-22";
+        private const string ASSOCIATE_TAG = "autumnsky-20";
 
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
-        private String Jan;
+        public String Jan;
+        public String Asin;
+        public String Content;
+        public String Feature;
+        public String Title;
+        public String Spec;
+        public String ImgUrL;
 
-        public String[] SearchCatalog()
+        public AmazonApi(String Jan)
+        {
+
+            this.Jan = Jan;
+            SearchCatalog();
+
+        }
+
+        private void SearchCatalog()
         {
             /*
              * Here is an ItemLookup example where the request is stored as a dictionary.
@@ -48,11 +60,10 @@ namespace SearchAmazonData
             IDictionary<string, string> elements = new Dictionary<string, String>();
 
             elements["Service"] = "AWSECommerceService";
-            elements["SearchIndex"] = "HomeImprovement";
+            elements["SearchIndex"] = "All";
             elements["Operation"] = "ItemSearch";
             elements["Keywords"] = Jan;
-            elements["ResponseGroup"] = "EditorialReview,ItemAttributes";
-            elements["Sort"] = "salesrank";
+            elements["ResponseGroup"] = "EditorialReview,Images,ItemAttributes";
 
             /* Random params for testing */
 
@@ -62,16 +73,11 @@ namespace SearchAmazonData
             String requestUrl;
             requestUrl = helper.Sign(elements);
 
-            String[] Result = FetchAmazonData(requestUrl);
+            FetchAmazonData(requestUrl);
 
-            return Result;
         }
 
-        public AmazonApi(String Jan){
-            this.Jan = Jan;
-            }
-
-        private static string[] FetchAmazonData(string url)
+        private void FetchAmazonData(string url)
         {
             try
             {
@@ -87,30 +93,31 @@ namespace SearchAmazonData
                     String[] ErrorMessage = new string[1];
               
                     ErrorMessage[0] = "Error: " + message + " (but signature worked)";
-                    return ErrorMessage;
+
                 }
 
                 XmlNode TitleNode = doc.GetElementsByTagName("Title", NAMESPACE).Item(0);
-                string title = TitleNode.InnerText;
+                this.Title = TitleNode.InnerText;
 
                 XmlNode ContentNode = doc.GetElementsByTagName("Content", NAMESPACE).Item(0);
-                string Content = ContentNode.InnerText;
+                this.Content = ContentNode.InnerText;
+
+                XmlNode AsinNode = doc.GetElementsByTagName("Asin").Item(0);
+                this.Asin = AsinNode.InnerText;
+
+                XmlNode LageImageNode = doc.SelectNodes("LargeImage/URL").Item(0);
+                this.ImgUrL = LageImageNode.InnerText;
 
                 XmlNodeList Features = doc.GetElementsByTagName("Feature", NAMESPACE);
                 StringBuilder Spec = new StringBuilder();
 
-                foreach(XmlNode Feature in Features)
+                foreach (XmlNode Feature in Features)
                 {
                     Spec.AppendLine(Feature.InnerText);
                 };
 
-                String[] AmazonData = new String[3];
+                this.Spec = Spec.ToString();
 
-                AmazonData[0] = title;
-                AmazonData[1] = Content;
-                AmazonData[2] = Spec.ToString();
-
-                return AmazonData;
             }
             catch (Exception e)
             {
@@ -118,7 +125,6 @@ namespace SearchAmazonData
                 System.Console.WriteLine("Stack Trace: " + e.StackTrace);
             }
 
-            return null;
         }
     }
 }

@@ -29,8 +29,8 @@ namespace SearchAmazonData
 {
     class AmazonApi
     {
-        private const string MY_AWS_ACCESS_KEY_ID = "YOUR_MY_AWS_ACCESS_KEY_ID";
-        private const string MY_AWS_SECRET_KEY = "YOUR_SECERET_KEY";
+        private const string MY_AWS_ACCESS_KEY_ID = "";
+        private const string MY_AWS_SECRET_KEY = "";
         private const string AMAZON_LOCALE = "webservices.amazon.co.jp";
         private const string ASSOCIATE_TAG = "autumnsky-20";
 
@@ -101,10 +101,10 @@ namespace SearchAmazonData
                 XmlNode ContentNode = doc.GetElementsByTagName("Content", NAMESPACE).Item(0);
                 this.Content = ContentNode.InnerText;
 
-                XmlNode AsinNode = doc.GetElementsByTagName("Asin").Item(0);
+                XmlNode AsinNode = doc.GetElementsByTagName("ASIN").Item(0);
                 this.Asin = AsinNode.InnerText;
 
-                XmlNode LageImageNode = doc.SelectNodes("LargeImage/URL").Item(0);
+                XmlNode LageImageNode = doc.GetElementsByTagName("LargeImage").Item(0);
                 this.ImgUrL = LageImageNode.InnerText;
 
                 XmlNodeList Features = doc.GetElementsByTagName("Feature", NAMESPACE);

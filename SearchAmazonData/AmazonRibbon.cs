@@ -26,7 +26,13 @@ namespace SearchAmazonData
                 {
                     AmazonApi AmazonData = new AmazonApi(Jan);
                     
-                    r.Resize[0, 1].Value = AmazonData.Asin;
+                    if(AmazonData.Asin == null)
+                    {
+                        r.Offset[0, 1].Value = "検索ヒットなし";
+                        continue;
+                    }
+
+                    r.Offset[0, 1].Value = AmazonData.Asin;
                     r.Offset[0, 2].Value = AmazonData.Title;
                     r.Offset[0, 3].Value = AmazonData.Spec;
                     r.Offset[0, 4].Value = AmazonData.Content;
@@ -35,8 +41,7 @@ namespace SearchAmazonData
                 }
                 catch
                 {
-                    r.Offset[0, 1].Value = "取得失敗";
-                    r.Offset[0, 6].Value = r.Address;
+                    r.Offset[0, 1].Value = "検索失敗";
                     continue;
                 }
             }

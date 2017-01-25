@@ -105,7 +105,7 @@ namespace SearchAmazonData
                 this.Asin = AsinNode.InnerText;
 
                 XmlNode LageImageNode = doc.GetElementsByTagName("LargeImage").Item(0);
-                this.ImgUrL = LageImageNode.InnerText;
+                this.ImgUrL = LageImageNode.FirstChild.InnerText;
 
                 XmlNodeList Features = doc.GetElementsByTagName("Feature", NAMESPACE);
                 StringBuilder Spec = new StringBuilder();

@@ -7,7 +7,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace SearchAmazonData
 {
-    public partial class Ribbon2
+    public partial class AmazonAPI
     {
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {

@@ -1,13 +1,13 @@
 ﻿namespace SearchAmazonData
 {
-    partial class Ribbon2 : Microsoft.Office.Tools.Ribbon.RibbonBase
+    partial class AmazonAPI : Microsoft.Office.Tools.Ribbon.RibbonBase
     {
         /// <summary>
         /// 必要なデザイナー変数です。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public Ribbon2()
+        public AmazonAPI()
             : base(Globals.Factory.GetRibbonFactory())
         {
             InitializeComponent();
@@ -50,18 +50,18 @@
             // group2
             // 
             this.group2.Items.Add(this.button1);
-            this.group2.Label = "group2";
+            this.group2.Label = "Adevertizing API";
             this.group2.Name = "group2";
             // 
             // button1
             // 
-            this.button1.Label = "商品情報取得";
+            this.button1.Label = "商品情報検索";
             this.button1.Name = "button1";
             this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click_1);
             // 
-            // Ribbon2
+            // AmazonAPI
             // 
-            this.Name = "Ribbon2";
+            this.Name = "AmazonAPI";
             this.RibbonType = "Microsoft.Excel.Workbook";
             this.Tabs.Add(this.AmazonApiTab);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon1_Load);
@@ -81,9 +81,9 @@
 
     partial class ThisRibbonCollection
     {
-        internal Ribbon2 Ribbon1
+        internal AmazonAPI Ribbon1
         {
-            get { return this.GetRibbon<Ribbon2>(); }
+            get { return this.GetRibbon<AmazonAPI>(); }
         }
     }
 }

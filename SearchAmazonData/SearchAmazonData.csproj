@@ -177,7 +177,7 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="ItemLookup.cs" />
+    <Compile Include="FetchAmazon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

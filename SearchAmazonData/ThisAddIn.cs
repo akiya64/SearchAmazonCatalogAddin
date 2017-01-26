@@ -14,6 +14,8 @@ namespace SearchAmazonData
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            AccessKeyForm SetKeyForm = new AccessKeyForm();
+            SetKeyForm.Show();
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

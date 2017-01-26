@@ -29,12 +29,13 @@ namespace SearchAmazonData
 {
     class AmazonApiData
     {
-        private const string MY_AWS_ACCESS_KEY_ID = "";
-        private const string MY_AWS_SECRET_KEY = "";
-        private const string AMAZON_LOCALE = "webservices.amazon.co.jp";
-        private const string ASSOCIATE_TAG = "autumnsky-22";
 
+        private const string AMAZON_LOCALE = "webservices.amazon.co.jp";
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
+
+        private string KeyId = Properties.Settings.Default.AwsAccessKey;
+        private string SecretKey = Properties.Settings.Default.MyAwsSecretKey;
+        private string ASSOCIATE_TAG = Properties.Settings.Default.AssociateTag;
 
         public String Jan;
         public String Asin;
@@ -67,7 +68,7 @@ namespace SearchAmazonData
             /* Random params for testing */
 
 
-            SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, AMAZON_LOCALE, ASSOCIATE_TAG);
+            SignedRequestHelper helper = new SignedRequestHelper(KeyId, SecretKey, AMAZON_LOCALE, ASSOCIATE_TAG);
 
             String requestUrl;
             requestUrl = helper.Sign(elements);

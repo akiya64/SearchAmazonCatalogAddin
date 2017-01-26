@@ -23,30 +23,39 @@ namespace SearchAmazonData.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AWS_ACCESS_KEY {
+        public string AwsAccessKey {
             get {
-                return ((string)(this["AWS_ACCESS_KEY"]));
+                return ((string)(this["AwsAccessKey"]));
+            }
+            set {
+                this["AwsAccessKey"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string MY_AWS_SECRET_KEY {
+        public string MyAwsSecretKey {
             get {
-                return ((string)(this["MY_AWS_SECRET_KEY"]));
+                return ((string)(this["MyAwsSecretKey"]));
+            }
+            set {
+                this["MyAwsSecretKey"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ASSOCIATE_TAG {
+        public string AssociateTag {
             get {
-                return ((string)(this["ASSOCIATE_TAG"]));
+                return ((string)(this["AssociateTag"]));
+            }
+            set {
+                this["AssociateTag"] = value;
             }
         }
     }

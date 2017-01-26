@@ -27,12 +27,12 @@ using System.Xml;
 
 namespace SearchAmazonData
 {
-    class AmazonApi
+    class AmazonApiData
     {
         private const string MY_AWS_ACCESS_KEY_ID = "";
         private const string MY_AWS_SECRET_KEY = "";
         private const string AMAZON_LOCALE = "webservices.amazon.co.jp";
-        private const string ASSOCIATE_TAG = "autumnsky-20";
+        private const string ASSOCIATE_TAG = "autumnsky-22";
 
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
@@ -41,9 +41,9 @@ namespace SearchAmazonData
         public String Content;
         public String Title;
         public String Spec;
-        public String ImgUrL;
+        public String ImgUrl;
 
-        public AmazonApi(String Jan)
+        public AmazonApiData(String Jan)
         {
 
             this.Jan = Jan;
@@ -105,7 +105,7 @@ namespace SearchAmazonData
                 this.Asin = AsinNode.InnerText;
 
                 XmlNode LageImageNode = doc.GetElementsByTagName("LargeImage").Item(0);
-                this.ImgUrL = LageImageNode.FirstChild.InnerText;
+                this.ImgUrl = LageImageNode.FirstChild.InnerText;
 
                 XmlNodeList Features = doc.GetElementsByTagName("Feature", NAMESPACE);
                 StringBuilder Spec = new StringBuilder();
@@ -118,12 +118,25 @@ namespace SearchAmazonData
                 this.Spec = Spec.ToString();
 
             }
+
             catch (Exception e)
             {
                 System.Console.WriteLine("Caught Exception: " + e.Message);
                 System.Console.WriteLine("Stack Trace: " + e.StackTrace);
             }
 
+        }
+
+        public static void DownLoadImage(String ImageUrl, String FileName)
+        {
+            if ( !(ImageUrl == null) && !(FileName == null))
+            {
+                WebClient dl = new WebClient();
+
+                String SavePath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyPictures) + "\\" + FileName + ".jpg";
+
+                dl.DownloadFile(ImageUrl,SavePath);
+            }
         }
     }
 }

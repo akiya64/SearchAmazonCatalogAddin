@@ -7,11 +7,11 @@ using System.Security;
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
 [assembly: AssemblyTitle("SearchAmazonData")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Amazon APIを使用するExcelアドイン")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SearchAmazonData")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Security;
 // すべての値を指定するか、以下のように '*' を使ってビルドおよびリビジョン番号を
 // 既定値にすることができます。
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 

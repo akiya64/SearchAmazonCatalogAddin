@@ -75,5 +75,41 @@ namespace SearchAmazonData
                 }
             }
         }
+
+        private void button3_Click(object sender, RibbonControlEventArgs e)
+        {
+            Range CurrentSelection = Globals.ThisAddIn.Application.Selection;
+            Worksheet CurrentSheet = Globals.ThisAddIn.Application.ActiveSheet;
+
+            foreach (Range r in CurrentSelection)
+            {
+                string Jan = r.Value;
+
+                try
+                {
+                    AmazonApiData AmazonData = new AmazonApiData(Jan);
+
+                    if (AmazonData.Asin == null)
+                    {
+                        r.Offset[0, 7].Value = "検索ヒットなし";
+                        continue;
+                    }
+
+                    r.Offset[0, 1].Value = AmazonData.Asin;
+                    r.Offset[0, 2].Value = AmazonData.Title;
+                    r.Offset[0, 3].Value = AmazonData.Spec;
+                    r.Offset[0, 4].Value = AmazonData.Content;
+                    r.Offset[0, 5].Value = AmazonData.ImgUrl;
+
+                    CurrentSheet.Hyperlinks.Add(r.Offset[0, 6], "https://www.amazon.co.jp/dp/" + AmazonData.Asin);
+
+                }
+                catch
+                {
+                    r.Offset[0, 7].Value = "検索失敗";
+                    continue;
+                }
+            }
+        }
     }
 }
